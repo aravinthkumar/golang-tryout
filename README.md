@@ -1,5 +1,13 @@
 # golang-tryout
 
-My repository for learning Go Language
+## Sample "Hello World" Web services
 
-All the exercises are captured as branches
+To build and the executable is created
+
+`go build`
+
+Run the executable and open the browser, type in the localhost and port number `3000`
+
+
+> Note : All the exercises are captured as branches
+
