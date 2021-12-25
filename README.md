@@ -4,7 +4,10 @@
 
 To build and the executable is created
 
-> go build
+`go build`
 
-Run the executable and open the browser, type in the localhost and port number "3000"
+Run the executable and open the browser, type in the localhost and port number `3000`
+
+
+> Note : All the exercises are captured as branches
 
