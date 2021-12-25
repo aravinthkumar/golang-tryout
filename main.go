@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -9,7 +10,12 @@ import (
 )
 
 func main() {
-	f, err := os.Open("app.log")
+	path := flag.String("path", "app.log", "path to provide the log file")
+	text := flag.String("text", "ABCD", "text you want to search on")
+
+	flag.Parse()
+
+	f, err := os.Open(*path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,7 +28,7 @@ func main() {
 		if err != nil {
 			break
 		}
-		if strings.Contains(s, "ABCD") {
+		if strings.Contains(s, *text) {
 			fmt.Println(s)
 		}
 	}
