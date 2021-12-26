@@ -7,8 +7,9 @@ func main() {
 		println(i)
 		i++
 		if i == 3 {
-			break
+			continue
 		}
+		println("continuing....")
 
 	}
 }
