@@ -9,5 +9,9 @@ func main() {
 	//loop over collection - map
 	for i, r := range m {
 		println(i, r)
+		if i == 2 {
+			panic("Something went wrong")
+		}
+
 	}
 }
