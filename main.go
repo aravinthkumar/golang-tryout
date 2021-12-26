@@ -1,15 +1,10 @@
 package main
 
 func main() {
-	//for loop with till condition
-	var i int
-	for i < 5 {
+	//for loop with till condition with post clause
+
+	for i := 0; i < 5; i++ {
 		println(i)
-		i++
-		if i == 3 {
-			continue
-		}
-		println("continuing....")
 
 	}
 }
