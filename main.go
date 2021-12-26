@@ -1,10 +1,13 @@
 package main
 
 func main() {
-	//for loop with till condition with post clause
-
-	for i := 0; i < 5; i++ {
+	//infinite loop with condition to stop
+	var i int
+	for {
+		if i == 5 {
+			break
+		}
 		println(i)
-
+		i++
 	}
 }
