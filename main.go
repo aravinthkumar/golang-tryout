@@ -1,24 +1,24 @@
 package main
 
-import "fmt"
-
-type user struct {
-	ID        int
-	FirstName string
+type HTTPRequest struct {
+	Method string
 }
 
 func main() {
+	r := HTTPRequest{"POST"}
 
-	user1 := user{1, "Aravinth"}
-	user2 := user{2, "Rahul"}
+	switch r.Method {
+	case "GET":
+		println("GET is called")
+	case "POST":
+		println("POST is called")
+	case "PUT":
+		println("PUT is called")
+	case "DELETE":
+		println("DELETE is called")
+	default:
+		println("Unhandled method")
 
-	fmt.Println(user1, user2)
-	if user1 == user2 {
-		println("Same person")
-	} else if user1.FirstName == user2.FirstName {
-		println("Same name")
-	} else {
-		println("Different person")
 	}
 
 }
