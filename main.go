@@ -1,13 +1,10 @@
 package main
 
 func main() {
-	//infinite loop with condition to stop
-	var i int
-	for {
-		if i == 5 {
-			break
-		}
-		println(i)
-		i++
+
+	slice := []int{1, 2, 3}
+	//loop over collection - slice
+	for i, r := range slice {
+		println(i, r)
 	}
 }
