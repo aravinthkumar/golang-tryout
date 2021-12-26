@@ -2,9 +2,12 @@ package main
 
 func main() {
 
-	slice := []int{1, 2, 3}
-	//loop over collection - slice
-	for i, r := range slice {
+	m := map[int]string{
+		1: "abc",
+		2: "xyz",
+	}
+	//loop over collection - map
+	for i, r := range m {
 		println(i, r)
 	}
 }
