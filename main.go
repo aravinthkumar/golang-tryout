@@ -1,17 +1,24 @@
 package main
 
+import "fmt"
+
+type user struct {
+	ID        int
+	FirstName string
+}
+
 func main() {
 
-	m := map[int]string{
-		1: "abc",
-		2: "xyz",
-	}
-	//loop over collection - map
-	for i, r := range m {
-		println(i, r)
-		if i == 2 {
-			panic("Something went wrong")
-		}
+	user1 := user{1, "Aravinth"}
+	user2 := user{2, "Rahul"}
 
+	fmt.Println(user1, user2)
+	if user1 == user2 {
+		println("Same person")
+	} else if user1.FirstName == user2.FirstName {
+		println("Same name")
+	} else {
+		println("Different person")
 	}
+
 }
