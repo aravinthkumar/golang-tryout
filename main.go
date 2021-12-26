@@ -1,25 +1,24 @@
 package main
 
-import (
-	"encoding/json"
-	"log"
-	"net/http"
-)
+import "fmt"
 
 func main() {
-	http.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
-		names := r.URL.Query()["name"]
-		var name string
-		if len(names) == 1 {
-			name = names[0]
-		}
-		m := map[string]string{"name": name}
-		enc := json.NewEncoder(rw)
-		enc.Encode(m)
-	})
-	err := http.ListenAndServe(":3000", nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println("Hello, Gophers")
+	port := 3000
+	// function invoked with argument
+	b, err := startWebServer(port, "2")
+	fmt.Println(b, err)
+}
+
+// Function with input parametes
+func startWebServer(port int, numberOfRetries string) (bool, error) {
+
+	fmt.Println("Starting server ....")
+
+	fmt.Println("Number of time retried", numberOfRetries)
+	// do something
+	fmt.Println("Server started in port", port)
+
+	return true, nil
 
 }
