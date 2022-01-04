@@ -13,15 +13,15 @@ func main() {
 	wg.Add(2)
 	// Receive Only channel syntax
 	go func(ch <-chan int, wg *sync.WaitGroup) {
-		fmt.Println(<-ch)
+		if msg, ok := <-ch; ok {
+			fmt.Print(msg, ok)
+		} // Would print  0 True since the channel is open
 		wg.Done()
 	}(ch, wg)
 	// Send only channel syntax
 	go func(ch chan<- int, wg *sync.WaitGroup) {
-		ch <- 52
-
 		// Only Send only channels can close
-		close(ch)
+		ch <- 0
 		wg.Done()
 	}(ch, wg)
 	wg.Wait()
