@@ -9,6 +9,7 @@ func main() {
 	wg := &sync.WaitGroup{}
 	// By default the channels are bi-directional
 	ch := make(chan int)
+
 	wg.Add(2)
 	// Receive Only channel syntax
 	go func(ch <-chan int, wg *sync.WaitGroup) {
@@ -18,6 +19,9 @@ func main() {
 	// Send only channel syntax
 	go func(ch chan<- int, wg *sync.WaitGroup) {
 		ch <- 52
+
+		// Only Send only channels can close
+		close(ch)
 		wg.Done()
 	}(ch, wg)
 	wg.Wait()
