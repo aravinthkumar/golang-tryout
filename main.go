@@ -1,24 +1,23 @@
 package main
 
-type HTTPRequest struct {
-	Method string
-}
+import (
+	"fmt"
+	"sync"
+)
 
 func main() {
-	r := HTTPRequest{"POST"}
+	wg := &sync.WaitGroup{}
+	ch := make(chan int)
 
-	switch r.Method {
-	case "GET":
-		println("GET is called")
-	case "POST":
-		println("POST is called")
-	case "PUT":
-		println("PUT is called")
-	case "DELETE":
-		println("DELETE is called")
-	default:
-		println("Unhandled method")
-
-	}
+	wg.Add(2)
+	go func(ch chan int, wg *sync.WaitGroup) {
+		fmt.Println(<-ch)
+		wg.Done()
+	}(ch, wg)
+	go func(ch chan int, wg *sync.WaitGroup) {
+		ch <- 42
+		wg.Done()
+	}(ch, wg)
+	wg.Wait()
 
 }
