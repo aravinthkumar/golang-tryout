@@ -7,18 +7,17 @@ import (
 
 func main() {
 	wg := &sync.WaitGroup{}
-	// Buffered Channel with value 1
-	ch := make(chan int, 1)
-
+	// By default the channels are bi-directional
+	ch := make(chan int)
 	wg.Add(2)
-	go func(ch chan int, wg *sync.WaitGroup) {
-		ch <- 42
-		// This is ignored since buffer is 1
-		ch <- 49
+	// Receive Only channel syntax
+	go func(ch <-chan int, wg *sync.WaitGroup) {
+		fmt.Println(<-ch)
 		wg.Done()
 	}(ch, wg)
-	go func(ch chan int, wg *sync.WaitGroup) {
-		fmt.Println(<-ch)
+	// Send only channel syntax
+	go func(ch chan<- int, wg *sync.WaitGroup) {
+		ch <- 52
 		wg.Done()
 	}(ch, wg)
 	wg.Wait()
